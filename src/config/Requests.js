@@ -1,5 +1,5 @@
-const API_KEY = "27e01e4a6ce05029d214d370746cfd80";
-const baseURL = "https://api.themoviedb.org/3";
+const API_KEY = "27e01e4a6ce05029d214d370746cfd80"
+const baseURL = "https://api.themoviedb.org/3"
 
 const requests = {
   fetchTrending: `${baseURL}/trending/all/week?api_key=${API_KEY}`,
@@ -10,7 +10,6 @@ const requests = {
   fetchHorrorMovies: `${baseURL}/discover/movie?api_key=${API_KEY}&width_genres=27`,
   fetchRomanceMovies: `${baseURL}/discover/movie?api_key=${API_KEY}&width_genres=10749`,
   fetchDocumentaries: `${baseURL}/discover/movie?api_key=${API_KEY}&width_genres=99`,
-};
+}
 
-// fetchNetflixOriginals: `${baseURL}/discover/tv?api_key=${API_KEY}&with_networks=123`,
-export default requests;
+export default requests
