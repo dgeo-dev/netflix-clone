@@ -30,9 +30,7 @@ function Banner() {
   }, [])
 
   function truncateText(string, n) {
-    return string?.length > n
-      ? string.substr(0, n - 1) + "..."
-      : "No description"
+    return string?.length > n ? string.substr(0, n - 1) + "..." : string
   }
 
   const bannerStyle = {
@@ -50,17 +48,19 @@ function Banner() {
         <p className="banner__description">
           {truncateText(movie?.overview, 100)}
         </p>
-        <div className="banner__buttons">
-          <Link to={`/video/${movie?.id}`}>
-            <button className="banner__button banner__button--play">
-              <PlayArrowIcon /> Lecture
+        {movie.id && (
+          <div className="banner__buttons">
+            <Link to={`/video/${movie?.id}`}>
+              <button className="banner__button banner__button--play">
+                <PlayArrowIcon /> Lecture
+              </button>
+            </Link>
+            <button className="banner__button" onClick={handlePopup}>
+              <HelpOutlineIcon />
+              Plus d'infos
             </button>
-          </Link>
-          <button className="banner__button" onClick={handlePopup}>
-            <HelpOutlineIcon />
-            Plus d'infos
-          </button>
-        </div>
+          </div>
+        )}
       </div>
       <QuickView
         bannerStyle={bannerStyle}
