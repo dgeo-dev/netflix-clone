@@ -64,7 +64,7 @@ function Banner() {
           </button>
         </div>
       </div>
-      <div className="banner__bottom"></div>
+
       <QuickView
         bannerStyle={bannerStyle}
         movie={movie}
