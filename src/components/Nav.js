@@ -1,55 +1,49 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import SearchIcon from "@material-ui/icons/Search";
-import CardGiftcardIcon from "@material-ui/icons/CardGiftcard";
-import NotificationsIcon from "@material-ui/icons/Notifications";
-import MenuIcon from "@material-ui/icons/Menu";
-import "./Nav.scss";
+import React from "react"
+import { useState } from "react"
+import "./Nav.scss"
+import MenuIcon from "@material-ui/icons/Menu"
+import SearchIcon from "@material-ui/icons/Search"
+import CardGiftcardIcon from "@material-ui/icons/CardGiftcard"
+import NotificationsIcon from "@material-ui/icons/Notifications"
 
 function Nav() {
-  const [show, handleShow] = useState(false);
-  const [menuShow, setToggleMenu] = useState(false);
+  const [navBlack, setNavBlack] = useState(false)
+  const [toggleMenu, setToggleMenu] = useState(false)
 
-  const handleToggleMenu = () => {
-    if (menuShow) {
-      setToggleMenu(false);
-      handleShow(false);
-    } else {
-      setToggleMenu(true);
-      handleShow(true);
-    }
-  };
+  const transitionNav = () => {
+    window.scrollY > 100 ? setNavBlack(true) : setNavBlack(false)
+  }
 
-  const transitionNavBar = () => {
-    if (window.scrollY > 100) {
-      handleShow(true);
-    } else {
-      handleShow(false);
-    }
-  };
+  useState(() => {
+    document.addEventListener("scroll", transitionNav)
+  })
 
-  useEffect(() => {
-    document.addEventListener("scroll", transitionNavBar);
-  }, []);
+  const handleClick = () => {
+    console.log(toggleMenu)
+    toggleMenu ? setToggleMenu(false) : setToggleMenu(true)
+  }
 
   return (
-    <div className={`nav ${show && "nav--black"}`}>
-      <MenuIcon className="toggleMenu" onClick={handleToggleMenu}></MenuIcon>
-      <Link to="/">
-        <img src="./images/logo.png" alt="" className="nav__logo" />
-      </Link>
-      <div className={`nav__links ${menuShow ? "show-nav" : "hide-nav"}`}>
-        <a href="/" className="nav_link">
+    <div
+      className={`nav ${
+        navBlack || toggleMenu ? "nav--black" : "nav--transparent"
+      } ${toggleMenu && "show"}`}
+    >
+      <button className="nav__burger" onClick={handleClick}>
+        <MenuIcon />
+      </button>
+      <img src="./images/logo.png" className="nav__logo" alt="Netflix" />
+      <nav className="nav__links">
+        <a href="/" className="nav__link">
           Accueil
         </a>
-        <a href="/" className="nav_link">
+        <a href="/" className="nav__link">
           Séries
         </a>
-        <a href="/" className="nav_link">
+        <a href="/" className="nav__link">
           Films
         </a>
-      </div>
+      </nav>
       <div className="nav__actions">
         <a href="/" className="nav__action">
           <SearchIcon />
@@ -63,14 +57,12 @@ function Nav() {
         <a href="/" className="nav__action">
           <NotificationsIcon />
         </a>
-        <img
-          src="./images/avatar.jpg"
-          className="nav__action nav__avatar"
-          alt=""
-        />
+        <a href="/" className="nav__action">
+          <img src="./images/avatar.jpg" alt="" />
+        </a>
       </div>
     </div>
-  );
+  )
 }
 
-export default Nav;
+export default Nav
