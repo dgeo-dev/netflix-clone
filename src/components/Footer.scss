@@ -1,0 +1,45 @@
+
+.footer {
+  margin:4rem 0 .4rem;
+  font-size:0.9rem;
+  color: rgb(116, 116, 116);
+  background-color: #111;
+  a {
+    color: inherit;
+  }
+  .social {
+    &__links {      
+      overflow: hidden;
+      padding:20px 0 0;
+    }
+    &__link {    
+      display: inline-block;     
+      margin-right:15px;
+    }
+    &__icon {
+      font-size:2.1rem;
+    }
+  }
+  &__links {
+    font-size:0.9rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style: none;
+    
+  }
+  &__link {
+    padding:10px 0;
+    flex: 0 0 50%;
+    
+  }
+  &__copyright {
+    padding:10px 0;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .footer__link {
+    flex: 0 0 25%;
+  }
+}

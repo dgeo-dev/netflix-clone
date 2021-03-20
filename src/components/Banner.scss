@@ -1,0 +1,50 @@
+.banner {
+  display: flex;
+  position: relative;
+  height: 80vh;
+  font-size:1rem;
+  @media screen and (min-width:768px) {
+    font-size:1.5rem;
+  }
+  
+  &__content {
+    padding: 20px;
+    padding-top:40vh;
+    max-width: 800px;
+    @media screen and (min-width:1200px) {      
+      padding: 40vh 60px 20px;
+    }
+  }
+  &__title {
+    margin-bottom: 20px;
+  }
+  &__buttons {
+    padding-top:20px;
+  }
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 15px;
+    font-size:inherit;
+    font-weight: bold;
+    svg {
+      margin-right:7px;
+    }
+    &--play {      
+      background-color: rgba(255,255,255,0.8);
+      color:#000;
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.6);
+      }
+    }
+  }
+  
+  &__bottom {
+    height:7rem;
+    background: linear-gradient(180deg, rgba(31, 31, 31, 0), rgba(31, 31, 31, 0.5), #111);
+    position: absolute;
+    bottom:0;
+    width:100%;
+  }
+}
+
